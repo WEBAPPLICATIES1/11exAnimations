@@ -1,0 +1,338 @@
+/*Algemene opmaak en layout voor mobile (<481px) */
+/* 
+achtergrond - kleur -lettertype - lijn hoogte - breedte
+box-sizing activeren en een kleiner lettertype
+*/
+header,
+section,
+aside,
+article,
+footer,
+.description {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding-left: 0.5em;
+}
+
+body {
+  background-color: #ffffff;
+  color: #666666;
+  font-family: Verdana, Arial, sans-serif;
+  line-height: 1.2em;
+  width: 100%;
+}
+
+/* achtergrond en hoogte instellen */
+header {
+  background-color: #aeaca8;
+}
+
+header > picture {
+  display: none;
+}
+
+/* 
+tekst ipv afbeelding voor de laagste resolutie
+font vergroten - breedte en float want icoon voor uitklapmenu moet ernaast komen
+*/
+h1 {
+  color: #de6581;
+  font-size: 1.5em;
+  width: 75%;
+  float: left;
+}
+
+/*Uitklapmenu - icon */
+nav ul {
+  display: none;
+  background-color: #aeaca8;
+}
+
+nav:hover ul {
+  display: block;
+}
+
+nav li {
+  border-bottom: 1px solid #eee;
+}
+
+nav li:last-child {
+  border-bottom: 0;
+}
+
+nav li a {
+  display: block;
+  padding: .5em .8em;
+  color: black;
+}
+
+nav li a.current {
+  color: #de6581;
+  cursor: default;
+}
+
+/*
+kleiner lettertype voor p en a in section
+*/
+section p,
+section a {
+  font-size: 0.8em;
+}
+
+/*
+opmaak afbeeldingen dimensies komen overeen met dimensies van *-small.jpg
+en extra ruimte onderaan voor de figcaption - centreren
+*/
+figure {
+  max-width: 218px;
+  max-height: 170px;
+  padding: 1em 1em 0;
+  border: 1px solid #eeeeee;
+}
+
+figcaption {
+  font-size: 90%;
+  text-align: left;
+}
+
+.description {
+  padding-top: 0.2em;
+  padding-bottom: 0.5em;
+}
+
+/*
+opmaak anchors
+*/
+aside section a {
+  display: block;
+  padding: 1em;
+  border-bottom: 1px solid #eeeeee;
+}
+
+aside section a:hover {
+  color: #985d6a;
+  background-color: #efefef;
+}
+
+/*
+opmaak headings
+*/
+h1,
+h2,
+h3 {
+  font-weight: normal;
+}
+
+h2 {
+  font-size: 1.3em;
+  padding: 0.5em 0 0.1em;
+}
+
+h3 {
+  font-size: 1.1em;
+  padding: 0.4em 0;
+  color: #de6581;
+}
+
+/* tussenlijntje met section */
+aside {
+  border-top: 1px solid #eee;
+}
+
+/*
+opmaak nav en footer
+*/
+nav,
+footer {
+  color: #ffffff;
+  background-color: #aeaca8;
+}
+
+/*
+specifieke opmaak voor footer
+*/
+footer {
+  text-align: center;
+  font-size: 75%;
+  height: 5%;
+}
+
+@media screen and (min-width: 480px) {
+  header {
+    padding: 0;
+  }
+  header > picture {
+    display: block;
+    max-height: 65px;
+    background-image: url(../images/header-medium-bg.jpg);
+    background-repeat: repeat-x;
+    background-position: top right;
+  }
+  h1 {
+    display: none;
+  }
+  nav {
+    margin-top: 2px;
+  }
+  nav > a {
+    display: none;
+  }
+  nav ul {
+    display: block;
+    padding: .1em;
+  }
+  nav li {
+    display: inline-block;
+    padding-left: .5em;
+    margin-right: .5em;
+    border-bottom: 0;
+    /* Add animation for bounce */
+  }
+  nav li:hover a {
+    -webkit-animation: bounce 400ms;
+            animation: bounce 400ms;
+  }
+  section.courses {
+    float: left;
+    width: 55%;
+  }
+  aside {
+    width: 45%;
+    float: left;
+    border-top: 0px;
+  }
+  footer {
+    clear: both;
+  }
+  figure {
+    margin: 2em 0 0;
+    /* Fly in caption from the side */
+  }
+  figure figcaption {
+    position: relative;
+    left: -200px;
+    -webkit-transition: -webkit-transform 300ms ease-in-out;
+    transition: -webkit-transform 300ms ease-in-out;
+    -o-transition: transform 300ms ease-in-out;
+    transition: transform 300ms ease-in-out;
+    transition: transform 300ms ease-in-out, -webkit-transform 300ms ease-in-out;
+  }
+  figure:hover figcaption {
+    -webkit-transform: translateX(200px);
+        -ms-transform: translateX(200px);
+            transform: translateX(200px);
+  }
+  section.popular-recipes,
+  section.contact-details {
+    padding-top: 2em;
+  }
+  /* zoom in on the popular recipe links on hover */
+  section.popular-recipes a {
+    -webkit-transition: all 300ms linear;
+    -o-transition: all 300ms linear;
+    transition: all 300ms linear;
+  }
+  section.popular-recipes a:hover {
+    -webkit-transform-origin: center left;
+        -ms-transform-origin: center left;
+            transform-origin: center left;
+    -webkit-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+}
+
+/*Layout voor desktop (>992px) */
+@media screen and (min-width: 992px) {
+  /* Slide in the top banner when loading the page */
+  header > picture {
+    -webkit-animation: slideIn 2s ease-in-out;
+            animation: slideIn 2s ease-in-out;
+    max-height: 130px;
+    background-image: url(../images/header-bg.jpg);
+  }
+  nav li {
+    padding-left: 1em;
+    font-size: 1.1em;
+  }
+  section.courses {
+    width: 70%;
+  }
+  aside {
+    width: 30%;
+  }
+  figure {
+    float: left;
+    max-width: 290px;
+    max-height: 220px;
+    margin-right: 1.5em;
+  }
+  article {
+    overflow: auto;
+    width: 100%;
+  }
+  .description {
+    padding-top: 1.5em;
+  }
+}
+
+/* Add keyframes for slide in and bounce */
+@-webkit-keyframes slideIn {
+  0% {
+    -webkit-transform: translateY(-200px);
+            transform: translateY(-200px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+    opacity: 1;
+  }
+}
+@keyframes slideIn {
+  0% {
+    -webkit-transform: translateY(-200px);
+            transform: translateY(-200px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes bounce {
+  0%,
+  100% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  50% {
+    -webkit-transform: translateY(-10px);
+            transform: translateY(-10px);
+  }
+  80% {
+    -webkit-transform: translateY(3px);
+            transform: translateY(3px);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  50% {
+    -webkit-transform: translateY(-10px);
+            transform: translateY(-10px);
+  }
+  80% {
+    -webkit-transform: translateY(3px);
+            transform: translateY(3px);
+  }
+}
+ 
+
+ /*# sourceMappingURL= style.css.map */
