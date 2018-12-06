@@ -203,6 +203,9 @@ footer {
             margin-right: .5em;
             border-bottom: 0;
             /* Add animation for bounce */
+            &:hover a {
+                animation: bounce 400ms;
+            }
         }
     }
     section.courses {
@@ -225,12 +228,24 @@ footer {
             transition: transform 300ms ease-in-out;
         }
         /* Fly in caption from the side */
+        &:hover figcaption {
+            transform: translateX(200px);
+        }
     }
     section.popular-recipes,
     section.contact-details {
         padding-top: 2em;
     }
     /* zoom in on the popular recipe links on hover */
+    section.popular-recipes {
+        a {
+            transition: all 300ms linear;
+            &:hover {
+                transform-origin: center left;
+                transform: scale(1.2);
+            }
+        }
+    }
 }
 
 
@@ -239,6 +254,7 @@ footer {
 @media screen and (min-width: 992px) {
     /* Slide in the top banner when loading the page */
     header>picture {
+        animation: slideIn 2s ease-in-out;
         max-height: 130px;
         background-image: url(../images/header-bg.jpg);
     }
@@ -269,3 +285,27 @@ footer {
 
 
 /* Add keyframes for slide in and bounce */
+
+@keyframes slideIn {
+    0% {
+        transform: translateY(-200px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes bounce {
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    80% {
+        transform: translateY(3px);
+    }
+}
