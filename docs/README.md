@@ -6,7 +6,7 @@ In deze oefening is het de bedoeling dat je 'CSS animations' en 'CSS transitions
 
 Een preview van de te bekomen 'CSS animations' en 'CSS transitions' vind je [hier](https://webapplicaties1.github.io/11exAnimations/)
 
-In **tablet modus**:
+Vanaf **tablet modus**:
 
 - Bij het hoveren over de menu items in de nav bar moeten de links even op en neer *bouncen*.
   - De lengte van de animation is 400 ms. 
