@@ -22,7 +22,6 @@ body {
   width: 100%;
 }
 
-/* achtergrond en hoogte instellen */
 header {
   background-color: #aeaca8;
 }
@@ -40,6 +39,7 @@ h1 {
   font-size: 1.5em;
   width: 75%;
   float: left;
+  margin: 0.5em;
 }
 
 /*Uitklapmenu - icon */
@@ -61,9 +61,15 @@ nav li:last-child {
 }
 
 nav li a {
+  text-decoration: none;
   display: block;
-  padding: .5em .8em;
+  padding: 0.5em 0.8em;
   color: black;
+}
+
+nav li a:hover {
+  color: #de6581;
+  background-color: #666666;
 }
 
 nav li a.current {
@@ -107,6 +113,8 @@ aside section a {
   display: block;
   padding: 1em;
   border-bottom: 1px solid #eeeeee;
+  color: #de6581;
+  text-decoration: none;
 }
 
 aside section a:hover {
@@ -165,8 +173,6 @@ footer {
     display: block;
     max-height: 65px;
     background-image: url(../images/header-medium-bg.jpg);
-    background-repeat: repeat-x;
-    background-position: top right;
   }
   h1 {
     display: none;
@@ -179,14 +185,20 @@ footer {
   }
   nav ul {
     display: block;
-    padding: .1em;
+    padding: 0.1em;
   }
   nav li {
     display: inline-block;
-    padding-left: .5em;
-    margin-right: .5em;
+    padding-left: 0.5em;
+    margin-right: 0.5em;
     border-bottom: 0;
-    /* Add animation for bounce */
+    /* Opdracht 1: bij het hoveren over de menu items */
+    /* moeten deze bouncen.                            */
+    /**************************************************/
+  }
+  nav li a:hover {
+    color: black;
+    background-color: transparent;
   }
   nav li:hover a {
     -webkit-animation: bounce 400ms;
@@ -206,48 +218,50 @@ footer {
   }
   figure {
     margin: 2em 0 0;
-    /* Fly in caption from the side */
+    /* Opdracht 2: bij het hoveren over figure moet */
+    /* de figcaption binnenvliegen vanaf links.     */
+    /************************************************/
   }
   figure figcaption {
-    position: relative;
-    left: -200px;
-    -webkit-transition: -webkit-transform 300ms ease-in-out;
-    transition: -webkit-transform 300ms ease-in-out;
-    -o-transition: transform 300ms ease-in-out;
-    transition: transform 300ms ease-in-out;
-    transition: transform 300ms ease-in-out, -webkit-transform 300ms ease-in-out;
+    /* Zet de figcaption op zijn beginpositie: 200px naar links */
+    -webkit-transform: translateX(-200px);
+            transform: translateX(-200px);
+    -webkit-transition: -webkit-transform 300ms;
+    transition: -webkit-transform 300ms;
+    transition: transform 300ms;
+    transition: transform 300ms, -webkit-transform 300ms;
   }
   figure:hover figcaption {
-    -webkit-transform: translateX(200px);
-        -ms-transform: translateX(200px);
-            transform: translateX(200px);
+    /* Schuif de figcaption terug naar zijn oorspronkelijke plaats */
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
   }
   section.popular-recipes,
   section.contact-details {
     padding-top: 2em;
   }
-  /* zoom in on the popular recipe links on hover */
   section.popular-recipes a {
-    -webkit-transition: all 300ms linear;
-    -o-transition: all 300ms linear;
-    transition: all 300ms linear;
+    /* Opdracht 3: bij het hoveren over de popular recipe links */
+    /* moeten deze 1.2 maal vergroten                            */
+    /************************************************************/
+    -webkit-transition: 300ms;
+    transition: 300ms;
   }
   section.popular-recipes a:hover {
     -webkit-transform-origin: center left;
-        -ms-transform-origin: center left;
             transform-origin: center left;
     -webkit-transform: scale(1.2);
-        -ms-transform: scale(1.2);
             transform: scale(1.2);
   }
 }
 
 /*Layout voor desktop (>992px) */
 @media screen and (min-width: 992px) {
-  /* Slide in the top banner when loading the page */
+  /* Opdracht 4: bij het laden van de pagina moet  */
+  /* de top banner op zijn plaats schuiven.         */
   header > picture {
-    -webkit-animation: slideIn 2s ease-in-out;
-            animation: slideIn 2s ease-in-out;
+    -webkit-animation: slidein 2s;
+            animation: slidein 2s;
     max-height: 130px;
     background-image: url(../images/header-bg.jpg);
   }
@@ -276,32 +290,7 @@ footer {
   }
 }
 
-/* Add keyframes for slide in and bounce */
-@-webkit-keyframes slideIn {
-  0% {
-    -webkit-transform: translateY(-200px);
-            transform: translateY(-200px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateY(0px);
-            transform: translateY(0px);
-    opacity: 1;
-  }
-}
-@keyframes slideIn {
-  0% {
-    -webkit-transform: translateY(-200px);
-            transform: translateY(-200px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateY(0px);
-            transform: translateY(0px);
-    opacity: 1;
-  }
-}
-
+/* de keyframes van de bounce animation (Opdracht 1) */
 @-webkit-keyframes bounce {
   0%,
   100% {
@@ -317,7 +306,6 @@ footer {
             transform: translateY(3px);
   }
 }
-
 @keyframes bounce {
   0%,
   100% {
@@ -333,6 +321,26 @@ footer {
             transform: translateY(3px);
   }
 }
- 
 
- /*# sourceMappingURL= style.css.map */
+/* de keyframes van de slidein animation (Opdracht 4) */
+@-webkit-keyframes slidein {
+  0% {
+    -webkit-transform: translateY(-200px);
+            transform: translateY(-200px);
+  }
+  100% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+}
+@keyframes slidein {
+  0% {
+    -webkit-transform: translateY(-200px);
+            transform: translateY(-200px);
+  }
+  100% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+}
+/*# sourceMappingURL=style.css.map */
